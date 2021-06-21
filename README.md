@@ -1,6 +1,8 @@
 # studio
 A Studio project created in flutter using Pexels API. Studio supports mobile, clone the appropriate branches mentioned below:
 
+'https://github.com/Yamunesh2108/studio'
+
 
 ## Getting Started
 
