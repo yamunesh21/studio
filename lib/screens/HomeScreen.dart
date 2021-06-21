@@ -134,7 +134,6 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   //extract the id from id list
-  //if id isn't exist then add id 
   updateId() {
     if (ids != null) {
       for (int i = 0; i < ids.length; i++) {
@@ -149,6 +148,7 @@ class _HomeScreenState extends State<HomeScreen> {
     print(idList);
   }
 
+  //get data from local storage
   getDataFromLocalStorage() {
     final info = storage.getItem('infoImage');
     // storage.deleteItem('infoImage');
@@ -165,11 +165,15 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
+    
+    //initialize api using function calling
     fetchapi();
   }
 
   @override
   Widget build(BuildContext context) {
+    
+    //designing of search bar with the help of widgets
     final searchView = Container(
       height: 50,
       child: TextField(
@@ -189,8 +193,12 @@ class _HomeScreenState extends State<HomeScreen> {
       alignment: Alignment.center,
     ).cornerRadiusWithClipRRect(10).paddingAll(16);
 
+    
+    //designing of image list with widgets
     final imgList = Container(
       height: 420,
+      
+      //list of images
       child: ListView.builder(
           itemCount: images.length,
           shrinkWrap: true,
@@ -229,6 +237,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                   fontFamily: fontBold,
                                 ),
                               ),
+                              
+                              //like button functioning
                               IconButton(
                                   icon: idList != null
                                       ? (index < images.length
@@ -283,12 +293,17 @@ class _HomeScreenState extends State<HomeScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               SizedBox(height: 30),
+              
+              //calling of search view
               searchView,
+              
               Padding(
                 padding: const EdgeInsets.only(
                     right: 16.0, left: 16, top: 8, bottom: 8),
                 child: InkWell(
                   onTap: () {
+                    
+                    //calling of load more function
                     loadmore();
                   },
                   child: Container(
@@ -302,6 +317,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ).cornerRadiusWithClipRRect(25),
               ),
+              
+              //calling of image list
               imgList,
             ],
           ),
