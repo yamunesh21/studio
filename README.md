@@ -9,7 +9,7 @@ A Studio project created in flutter using Pexels API. Studio supports mobile, cl
 The Studio contains the minimal implementation required to create a new library or project. The repository code is preloaded with some basic components like basic app architecture, constants and required dependencies to create a new project.I use Pexels API for Images & Videos And use local storage to use it.
 
 
-##Studio Feature
+## Studio Feature
 
 Splash
 Home
@@ -23,7 +23,7 @@ Dependency
 Widgets
 Utils
 
-##folder structure
+## folder structure
 
 studio/
 |- android
@@ -32,7 +32,7 @@ studio/
 |- lib
 |- test
 
-#sub-structure
+# sub-structure
 
 lib/
 |- models/
@@ -42,7 +42,7 @@ lib/
 |- main.dart
 
 
-#Now, lets dive into the lib folder which has the main code for the application.
+# Now, lets dive into the lib folder which has the main code for the application.
 
 1- AppConstant - All the application level constants are defined in this directory with-in their respective files. This directory contains the constants for `theme`, `dimentions`, `api endpoints`, `preferences` and `strings`.
 2- AppColors - Contains the colors of your project.
@@ -52,7 +52,7 @@ lib/
 6- main.dart - This is the starting point of the application. All the application level configurations are defined in this file i.e, theme, routes, title, orientation etc.
 
 
-##Main
+## Main
 
 import 'package:flutter/material.dart';
 import 'package:splashscreen/splashscreen.dart';
