@@ -26,30 +26,30 @@ Utils
 ## folder structure
 
 studio/
-|- android
-|- build
-|- ios
-|- lib
-|- test
+| - android
+| - build
+| - ios
+| - lib
+| - test
 
 # sub-structure
 
 lib/
-|- models/
-|- screens/
-|- utils/
-|- generated_plugins_registrants/
-|- main.dart
+| - models/
+| - screens/
+| - utils/
+| - generated_plugins_registrants/
+| - main.dart
 
 
 # Now, lets dive into the lib folder which has the main code for the application.
 
-1- AppConstant - All the application level constants are defined in this directory with-in their respective files. This directory contains the constants for `theme`, `dimentions`, `api endpoints`, `preferences` and `strings`.
-2- AppColors - Contains the colors of your project.
-3- AppImages - Contains all the images of your application.
-4- AppStrings - Contains all the Strings of your project,.
-5- AppWidgets-Contains the common widgets for your applications. For example, Button, TextField etc.
-6- main.dart - This is the starting point of the application. All the application level configurations are defined in this file i.e, theme, routes, title, orientation etc.
+1 - AppConstant - All the application level constants are defined in this directory with-in their respective files. This directory contains the constants for `theme`, `dimentions`, `api endpoints`, `preferences` and `strings`.
+2 - AppColors - Contains the colors of your project.
+3 - AppImages - Contains all the images of your application.
+4 - AppStrings - Contains all the Strings of your project,.
+5 - AppWidgets-Contains the common widgets for your applications. For example, Button, TextField etc.
+6 - main.dart - This is the starting point of the application. All the application level configurations are defined in this file i.e, theme, routes, title, orientation etc.
 
 
 ## Main
