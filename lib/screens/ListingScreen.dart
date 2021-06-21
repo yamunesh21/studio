@@ -23,6 +23,7 @@ class _ListingScreenState extends State<ListingScreen>
   List videos = [];
   int page = 1;
 
+  //get data from local storage
   void getitemFromLocalStorage() {
     final infoImg = storage.getItem('infoImage');
     final infoVid = storage.getItem('infoVideo');
@@ -37,7 +38,11 @@ class _ListingScreenState extends State<ListingScreen>
 
   void initState() {
     super.initState();
+    
+    //calling the function of get item
     getitemFromLocalStorage();
+    
+    //object initialization of tab controller
     _tabController = TabController(length: 2, vsync: this);
   }
 
@@ -51,6 +56,7 @@ class _ListingScreenState extends State<ListingScreen>
   Widget build(BuildContext context) {
     changeStatusColor(Colors.transparent);
 
+    //designing & functioning of liked image list with the help of widget
     final imgList = ListView.builder(
         itemCount: images == null ? 0 : images.length,
         shrinkWrap: true,
@@ -87,6 +93,7 @@ class _ListingScreenState extends State<ListingScreen>
           ).paddingOnly(top: 8, bottom: 8, left: 24, right: 24);
         });
 
+    //designing & functioning of liked video list with the help of widget
     final vidList = ListView.builder(
         itemCount: videos == null ? 0 : videos.length,
         shrinkWrap: true,
@@ -108,6 +115,8 @@ class _ListingScreenState extends State<ListingScreen>
                   Center(
                     child: InkWell(
                       onTap: () {
+                        
+                        //navigate to the video player
                         Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -152,6 +161,7 @@ class _ListingScreenState extends State<ListingScreen>
       child: Scaffold(
         appBar: TabBar(
           controller: _tabController,
+          
           // give the indicator a decoration (color and border radius)
           indicator: BoxDecoration(
             borderRadius: BorderRadius.circular(
@@ -165,8 +175,9 @@ class _ListingScreenState extends State<ListingScreen>
               fontWeight: FontWeight.bold,
               fontStyle: FontStyle.italic),
           unselectedLabelColor: Colors.black,
+          
+          //calling the tabs
           tabs: [
-            // first tab [you can add an icon using the icon property]
             Tab(
               text: 'Image List',
             ),
