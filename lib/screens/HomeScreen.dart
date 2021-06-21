@@ -20,6 +20,9 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  
+  // for storing the data in local storage or directory
+  //initailing local storage
   final LocalStorage storage = new LocalStorage('localstorage_app');
 
   var isClicked = false;
@@ -29,6 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
   var ids;
   int page = 1;
 
+  // to get the api image data 
   fetchapi() async {
     await http.get(Uri.parse('https://api.pexels.com/v1/curated?per_page=10'),
         headers: {
@@ -45,10 +49,14 @@ class _HomeScreenState extends State<HomeScreen> {
     updateId();
   }
 
+  
+ // to load more data
   loadmore() async {
     setState(() {
       page = page + 1;
     });
+    
+    //to initialing api url
     String url =
         'https://api.pexels.com/v1/curated?per_page=10&page=' + page.toString();
     await http.get(Uri.parse(url), headers: {
@@ -57,6 +65,7 @@ class _HomeScreenState extends State<HomeScreen> {
     }).then((value) {
       Map result = jsonDecode(value.body);
       setState(() {
+        //add more data in image list
         images.addAll(result['photos']);
       });
     });
@@ -64,9 +73,19 @@ class _HomeScreenState extends State<HomeScreen> {
 
   List picInfo;
 
+  
+  //to add data in local storage
+ 
   void addItemsToLocalStorage(var id, var user, var url) {
+    
+    //First get the data which stored in local storage
+    
     var infos = storage.getItem('infoImage');
     var idList = [];
+    
+    //check the image list whether it is null or not
+    //if the list is null then add data in 0th index
+    
     if (infos == null) {
       picInfo = [
         {'id': id, 'user': user, 'url': url}
@@ -75,15 +94,25 @@ class _HomeScreenState extends State<HomeScreen> {
         infos = picInfo;
         idList = [id];
       });
-    } else {
+    } 
+    
+    //otherwise add more data in existing list
+    
+    else {
       int i = 0;
       var temp = false;
       for (i = 0; i < infos.length; i++) {
+        
+        //check list if id is already exist in current list
         if (infos[i]['id'] == id) {
+          
+          //set the value of temp variable and break the loop
           temp = true;
           break;
         }
       }
+      
+      // if id doesn't exist in list then we add data
       if (!temp) {
         picInfo = [
           {'id': id, 'user': user, 'url': url}
@@ -97,7 +126,6 @@ class _HomeScreenState extends State<HomeScreen> {
     storage.setItem('infoImage', infos);
     updateId();
     var info = storage.getItem('infoImage');
-    // storage.deleteItem('infoImage');
     setState(() {
       ids = info;
     });
@@ -105,6 +133,8 @@ class _HomeScreenState extends State<HomeScreen> {
     // print(ids[0]['id']);
   }
 
+  //extract the id from id list
+  //if id isn't exist then add id 
   updateId() {
     if (ids != null) {
       for (int i = 0; i < ids.length; i++) {
